@@ -5,8 +5,8 @@ default: &default
   
 development:
   <<: *default
-  database: defaultdb
-  username: avnadmin
-  password: AVNS_2HzPhRkkZzjr08zvnys
-  host: pg-1aea50ac-nyavotraa-2d27.b.aivencloud.com
-  port: 25695
+  host: <%= ENV['DB_HOST'] %>
+  port: <%= ENV['DB_PORT'] %>
+  database: <%= ENV['DB_NAME'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
