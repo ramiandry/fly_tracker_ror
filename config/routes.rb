@@ -10,6 +10,19 @@ Rails.application.routes.draw do
   namespace :api do
     resources :flights, only: [:index]
   end
+
+  namespace :api do
+    namespace :v1 do
+      resources :users
+    end
+  end
+
+  namespace :api do
+    namespace :v1 do
+      resources :aircrafts
+    end
+  end
+  
   
   get "up" => "rails/health#show", as: :rails_health_check
 

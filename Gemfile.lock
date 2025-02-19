@@ -74,6 +74,7 @@ GEM
       tzinfo (~> 2.0, >= 2.0.5)
     ast (2.4.2)
     base64 (0.2.0)
+    bcrypt (3.1.20)
     benchmark (0.4.0)
     bigdecimal (3.1.9)
     bootsnap (1.18.4)
@@ -152,6 +153,8 @@ GEM
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.1.10)
+    rack-cors (2.0.2)
+      rack (>= 2.0.0)
     rack-session (2.1.0)
       base64 (>= 0.1.0)
       rack (>= 3.0.0)
@@ -246,6 +249,7 @@ PLATFORMS
   x64-mingw-ucrt
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   bootsnap
   brakeman
   debug
@@ -253,6 +257,7 @@ DEPENDENCIES
   httparty
   pg (~> 1.1)
   puma (>= 5.0)
+  rack-cors
   rails (~> 7.2.2)
   rubocop-rails-omakase
   tzinfo-data
