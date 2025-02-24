@@ -4,11 +4,11 @@ Rails.application.routes.draw do
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   namespace :api do
-    resources :aircrafts, only: [:index]
+    resources :aircrafts, only: [ :index ]
   end
-  
+
   namespace :api do
-    resources :flights, only: [:index]
+    resources :flights, only: [ :index ]
   end
 
   namespace :api do
@@ -16,14 +16,17 @@ Rails.application.routes.draw do
       resources :users
     end
   end
-
   namespace :api do
     namespace :v1 do
-      resources :aircrafts
+      resources :aircrafts, except: [ :new, :edit ] do
+        collection do
+          post "import"  # Route pour importer les fichiers CSV
+        end
+      end
     end
   end
-  
-  
+
+
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
