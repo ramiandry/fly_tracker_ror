@@ -1,0 +1,47 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ident: MyString
+  type: 
+  name: MyString
+  latitude_deg: 1.5
+  longitude_deg: 1.5
+  elevation_ft: 1
+  continent: MyString
+  country_name: MyString
+  iso_country: MyString
+  region_name: MyString
+  iso_region: MyString
+  local_region: MyString
+  municipality: MyString
+  scheduled_service: false
+  gps_code: MyString
+  iata_code: MyString
+  local_code: MyString
+  home_link: MyString
+  wikipedia_link: MyString
+  keywords: MyString
+  score: 1.5
+
+two:
+  ident: MyString
+  type: 
+  name: MyString
+  latitude_deg: 1.5
+  longitude_deg: 1.5
+  elevation_ft: 1
+  continent: MyString
+  country_name: MyString
+  iso_country: MyString
+  region_name: MyString
+  iso_region: MyString
+  local_region: MyString
+  municipality: MyString
+  scheduled_service: false
+  gps_code: MyString
+  iata_code: MyString
+  local_code: MyString
+  home_link: MyString
+  wikipedia_link: MyString
+  keywords: MyString
+  score: 1.5

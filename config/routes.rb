@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       resources :users
     end
   end
+
   namespace :api do
     namespace :v1 do
       resources :aircrafts, except: [ :new, :edit ] do
@@ -25,6 +26,23 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  namespace :api do
+    namespace :v1 do
+      resources :airports do
+        collection do
+          post "import"  # Route pour importer les fichiers CSV
+        end
+      end
+    end
+  end
+
+  namespace :api do
+    namespace :v1 do
+      resources :historiques
+    end
+  end
+
 
 
   get "up" => "rails/health#show", as: :rails_health_check

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_02_19_134852) do
+ActiveRecord::Schema[7.2].define(version: 2025_03_03_123509) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,6 +50,42 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_19_134852) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "airports", force: :cascade do |t|
+    t.string "ident"
+    t.string "airport_type"
+    t.string "name"
+    t.float "latitude_deg"
+    t.float "longitude_deg"
+    t.integer "elevation_ft"
+    t.string "continent"
+    t.string "iso_country"
+    t.string "region_name"
+    t.string "iso_region"
+    t.string "local_region"
+    t.string "municipality"
+    t.boolean "scheduled_service"
+    t.string "gps_code"
+    t.string "iata_code"
+    t.string "local_code"
+    t.string "home_link"
+    t.string "wikipedia_link"
+    t.string "keywords"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "historiques", force: :cascade do |t|
+    t.integer "aircraft_id"
+    t.integer "user_id"
+    t.string "action"
+    t.datetime "timestamp"
+    t.text "details"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["aircraft_id"], name: "index_historiques_on_aircraft_id"
+    t.index ["user_id"], name: "index_historiques_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -58,4 +94,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_19_134852) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_foreign_key "historiques", "aircrafts"
+  add_foreign_key "historiques", "users"
 end
