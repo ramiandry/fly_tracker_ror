@@ -1,4 +1,5 @@
 class Api::V1::HistoriquesController < ApplicationController
+  before_action :authorize_request
   # GET /api/v1/historiques
   def index
     historiques = Historique.all

@@ -1,6 +1,7 @@
 module Api
   module V1
     class UsersController < ApplicationController
+      before_action :authorize_request, except: [ :create ]
       # GET /api/v1/users
       def index
         users = User.all
@@ -15,6 +16,7 @@ module Api
 
       # POST /api/v1/users
       def create
+        print(user_params)
         user = User.new(user_params)
         if user.save
           render json: user, status: :created

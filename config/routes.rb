@@ -71,6 +71,12 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api do
+    namespace :v1 do
+      post "authenticate", to: "authentication#authenticate"  # Route pour l'authentification
+    end
+  end
+
 
 
 

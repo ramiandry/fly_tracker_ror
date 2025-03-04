@@ -1,4 +1,5 @@
 class Api::V1::VolFavorisController < ApplicationController
+  before_action :authorize_request
   def index
     vol_favoris = VolFavori.all
     render json: vol_favoris

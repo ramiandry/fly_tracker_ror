@@ -1,4 +1,5 @@
 class Api::V1::FlightsController < ApplicationController
+  before_action :authorize_request
   # GET /api/v1/flights
   def index
     flights = Flight.all

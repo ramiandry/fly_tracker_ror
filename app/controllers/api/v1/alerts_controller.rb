@@ -1,4 +1,5 @@
 class Api::V1::AlertsController < ApplicationController
+  before_action :authorize_request
   # GET /api/v1/alerts
   def index
     alerts = Alert.all
@@ -11,7 +12,7 @@ class Api::V1::AlertsController < ApplicationController
     if alert
       render json: alert
     else
-      render json: { error: 'Alert not found' }, status: :not_found
+      render json: { error: "Alert not found" }, status: :not_found
     end
   end
 
@@ -35,7 +36,7 @@ class Api::V1::AlertsController < ApplicationController
         render json: { errors: alert.errors.full_messages }, status: :unprocessable_entity
       end
     else
-      render json: { error: 'Alert not found' }, status: :not_found
+      render json: { error: "Alert not found" }, status: :not_found
     end
   end
 
@@ -46,7 +47,7 @@ class Api::V1::AlertsController < ApplicationController
       alert.destroy
       head :no_content
     else
-      render json: { error: 'Alert not found' }, status: :not_found
+      render json: { error: "Alert not found" }, status: :not_found
     end
   end
 

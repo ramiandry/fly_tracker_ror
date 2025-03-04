@@ -1,6 +1,7 @@
 module Api
   module V1
     class AirportsController < ApplicationController
+      before_action :authorize_request
       # GET /api/v1/airports
       def index
         airports = Airport.all

@@ -1,6 +1,7 @@
 module Api
   module V1
     class AircraftsController < ApplicationController
+      before_action :authorize_request
       # GET /api/v1/aircrafts
       def index
         aircrafts = Aircraft.all
