@@ -43,6 +43,25 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api do
+    namespace :v1 do
+      resources :flights
+    end
+  end
+
+  namespace :api do
+    namespace :v1 do
+      resources :vol_favoris
+    end
+  end
+
+  namespace :api do
+    namespace :v1 do
+      resources :alerts
+    end
+  end
+
+
 
 
   get "up" => "rails/health#show", as: :rails_health_check

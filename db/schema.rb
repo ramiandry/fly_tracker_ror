@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_03_03_123509) do
+ActiveRecord::Schema[7.2].define(version: 2025_03_03_134157) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -74,6 +74,30 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_03_123509) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "alerts", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "flight_id", null: false
+    t.string "alert_type"
+    t.text "message"
+    t.boolean "read", default: false
+    t.boolean "sent", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["flight_id"], name: "index_alerts_on_flight_id"
+    t.index ["user_id"], name: "index_alerts_on_user_id"
+  end
+
+  create_table "flights", force: :cascade do |t|
+    t.string "flight_code"
+    t.datetime "departure_time"
+    t.datetime "arrival_time"
+    t.string "origin_airport_id"
+    t.string "destination_airport_id"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "historiques", force: :cascade do |t|
     t.integer "aircraft_id"
     t.integer "user_id"
@@ -95,6 +119,19 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_03_123509) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "vol_favoris", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "flight_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["flight_id"], name: "index_vol_favoris_on_flight_id"
+    t.index ["user_id"], name: "index_vol_favoris_on_user_id"
+  end
+
+  add_foreign_key "alerts", "flights"
+  add_foreign_key "alerts", "users"
   add_foreign_key "historiques", "aircrafts"
   add_foreign_key "historiques", "users"
+  add_foreign_key "vol_favoris", "flights"
+  add_foreign_key "vol_favoris", "users"
 end
