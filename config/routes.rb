@@ -19,6 +19,16 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      resources :mails, only: [] do
+        collection do
+          post "send_welcome_email"  # Pas besoin d'un :id
+        end
+      end
+    end
+  end
+
+  namespace :api do
+    namespace :v1 do
       resources :aircrafts, except: [ :new, :edit ] do
         collection do
           post "import"  # Route pour importer les fichiers CSV

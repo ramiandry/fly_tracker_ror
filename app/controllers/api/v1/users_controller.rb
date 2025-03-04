@@ -39,7 +39,6 @@ module Api
         user.destroy
         head :no_content
       end
-
       private
 
       def user_params
