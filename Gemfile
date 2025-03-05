@@ -15,7 +15,6 @@ gem "httparty"
 
 # Environment virtual
 gem "dotenv-rails", groups: [ :development, :test ]
-
 # Auntification with JWT
 gem "jwt"
 
